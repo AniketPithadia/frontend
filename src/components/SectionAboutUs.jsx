@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { signIn, useSession } from "next-auth/react";
 import { FaKey } from "react-icons/fa";
 import Link from "next/link";
+import ChatWidget from "./ChatWidget";
 
 const merriweather = Merriweather({
   subsets: ["latin"],
@@ -23,7 +24,6 @@ function SectionAboutUs() {
   console.log("isAdmin: ", isAdmin);
   useEffect(() => {
     if (session && session.user && !userDataSent && !loading) {
-      // console.log("session token: ", session);
       sendUserDataToBackend(session.user);
     }
   }, [session, userDataSent, loading]);
@@ -73,23 +73,19 @@ function SectionAboutUs() {
             </p>
           </div>
           <div className="flex items-center gap-4 ">
-            {session && session.user ? (
-              <>
-                {isAdmin ? (
-                  <Link href="/admin">
-                    <button className="bg-white z-100 flex items-center gap-3  text-primaryColor font-bold  text-2xl px-12 py-6 rounded-full max-w-max">
-                      Admin Dashboard
-                    </button>
-                  </Link>
-                ) : (
-                  <button className="bg-white z-100 flex items-center gap-3  text-primaryColor font-bold  text-2xl px-12 py-6 rounded-full max-w-max">
-                    <FaComments size={30} />
-                    Chat with our Specialist
-                  </button>
-                )}
-              </>
+            <div
+              className={` ${
+                session && session.user
+                  ? "row-start-4 row-end-5"
+                  : "row-start-3 row-end-4"
+              }`}
+            >
+              <ChatWidget />
+              {/* {session && session.user ? (
+          <div className="items-center gap-4">
+              </div>
             ) : (
-              <div className="flex justify-center flex-col :flex-row gap-2">
+              <div className="flex flex-col md:flex-row gap-2">
                 <div
                   type="button"
                   className="pt-1"
@@ -102,7 +98,6 @@ function SectionAboutUs() {
                     Sign In With Google
                   </div>
                 </div>
-
                 <div
                   type="button"
                   className="pt-1"
@@ -112,21 +107,26 @@ function SectionAboutUs() {
                 >
                   <div className=" bg-white text-primaryColor bg-opacity-50 flex gap-5 pt-3 pb-3 px-10 text-xl justify-center items-center rounded-full hover:cursor-pointer">
                     <FaKey size={22} />
-                    Sign In With KeyCloak
+                    Sign In With Email
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
+            </div>
           </div>
           <div className="h-auto"></div>
         </div>
 
-        <div className="flex justify-end">
+        <div className="grid justify-end">
           <Image
             alt="about us graphic"
+            loading="eager"
             priority={true}
             src={AboutUsImg}
-            className="hidden sm:block col-start-2 col-end-3 h-full w-auto"
+            className="hidden sm:block object-cover sm:transition-opacity sm:opacity-0 sm:duration-[0.5s] "
+            onLoadingComplete={(image) =>
+              image.classList.remove("sm:opacity-0")
+            }
           />
         </div>
       </div>

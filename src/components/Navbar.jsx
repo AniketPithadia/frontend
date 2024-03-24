@@ -43,6 +43,21 @@ function Navbar() {
         </Link>
         <div>
           <ul className="text-primaryColor font-light flex gap-5">
+            <Link href="#aboutus">
+              <li className="hover:font-normal hover:cursor-pointer">
+                About Us
+              </li>
+            </Link>
+            <Link href="#services">
+              <li className="hover:font-normal hover:cursor-pointer">
+                Services
+              </li>
+            </Link>
+            <Link href="#contactus">
+              <li className="hover:font-normal hover:cursor-pointer">
+                Contact Us
+              </li>
+            </Link>
             {session && session.user && (
               <>
                 <li className="hover:font-normal hover:cursor-pointer">

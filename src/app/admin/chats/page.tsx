@@ -11,7 +11,7 @@ function Page() {
     <div className="min-h-screen">
       <div className="mx-auto flex">
         <Sidebar />
-        <Message username={username} room={"room1"} />
+        <Message username={username} room={"roomId"} />
       </div>
     </div>
   );
