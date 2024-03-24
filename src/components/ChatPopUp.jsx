@@ -15,11 +15,10 @@ function ChatPopUp(props) {
           <p className="text-lg font-semibold">
             {session && session.user ? session.user.name : "LiveAssist360"}
           </p>
-          <button
+         <button
             id="close-chat"
             className="text-gray-300 hover:text-gray-400 focus:outline-none focus:text-gray-400"
-            onClick={props.toggleDisplay}
-          >
+            onClick={props.toggleDisplay}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-6 h-6"

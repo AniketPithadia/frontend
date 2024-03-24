@@ -53,7 +53,7 @@ export const Message = ({ room, username }) => {
   return (
     <div className="message_root_div">
       {/* <span className="room_name">Room: {room} </span> */}
-      <span className="user_name">Welcome: {username} </span>
+      {session?.details?.role === "ADMIN" ? <span className="user_name">Welcome: {username} </span> : "" }
       <div className="message_component">
         <MessageList username={username} messageList={messageList} />
         <form className="chat-input" onSubmit={(e) => sendMessage(e)}>
