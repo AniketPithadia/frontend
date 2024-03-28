@@ -5,11 +5,13 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 function Navbar() {
   const { data: session } = useSession();
   const isAdmin = session?.details?.role === "ADMIN" ? true : false;
   const [username, setUsername] = useState("");
+
   function capitalizeName(name) {
     let nameParts = name.split(" ");
     for (let i = 0; i < nameParts.length; i++) {
@@ -18,15 +20,32 @@ function Navbar() {
     }
     return nameParts.join(" ");
   }
+
   useEffect(() => {
     if (session?.user) {
       setUsername(capitalizeName(session.user.name));
-      console.log("provider " + session.provider);
-      console.log("session " + session);
     } else {
       setUsername("");
     }
   }, [session]);
+
+  const handleSignOut = async () => {
+    try {
+      const userId = session.details?.userId; // Assuming user ID is accessible from session
+  
+      await fetch("http://localhost:8080/api/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: userId }), // Send userId in the request body as JSON
+      });  
+    } catch (error) {
+      console.error("Error updating user status:", error);
+    }
+    signOut(); // Sign out the user after updating status
+  };
+  
 
   return (
     <nav className="bg-slate shadow-xl bg-white">
@@ -37,27 +56,13 @@ function Navbar() {
             alt="LiveAssist360 Logo"
             width="300"
             height="auto"
-            className=" hover:cursor-pointer"
+            className="hover:cursor-pointer"
             priority={true}
           />
         </Link>
         <div>
           <ul className="text-primaryColor font-light flex gap-5">
-            <Link href="#aboutus">
-              <li className="hover:font-normal hover:cursor-pointer">
-                About Us
-              </li>
-            </Link>
-            <Link href="#services">
-              <li className="hover:font-normal hover:cursor-pointer">
-                Services
-              </li>
-            </Link>
-            <Link href="#contactus">
-              <li className="hover:font-normal hover:cursor-pointer">
-                Contact Us
-              </li>
-            </Link>
+            {/* Your navigation links */}
             {session && session.user && (
               <>
                 <li className="hover:font-normal hover:cursor-pointer">
@@ -81,9 +86,7 @@ function Navbar() {
                 )}
                 <li
                   className="hover:font-normal hover:cursor-pointer"
-                  onClick={() => {
-                    signOut();
-                  }}
+                  onClick={handleSignOut}
                 >
                   Sign Out
                 </li>

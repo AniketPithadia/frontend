@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { FaKey } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -7,6 +7,13 @@ import { Message } from "./Message/Message";
 
 function ChatPopUp(props) {
   const { data: session } = useSession();
+  const [sessionFetched, setSessionFetched] = useState(false);
+
+  useEffect(() => {
+    if (!sessionFetched && session) {
+      setSessionFetched(true);
+    }
+  }, [session, sessionFetched]);
 
   return (
     <div id="chat-container" className="fixed bottom-5 w-80">
@@ -37,7 +44,7 @@ function ChatPopUp(props) {
         </div>
         <div id="chatbox" className="p-4 h-80 overflow-y-auto">
           {session && session.user ? (
-            <Message room="roomId" username={session.user.name} />
+            <Message room="roomId" username={session.user.name} senderId={session.details.userId}/>
           ) : (
             <div className="flex flex-col md:flex-row gap-2">
               <div

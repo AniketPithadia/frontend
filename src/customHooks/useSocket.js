@@ -3,7 +3,7 @@ import * as io from "socket.io-client";
 import { SOCKET_BASE_URL } from "../constants/apiConstants";
 import { useSession } from "next-auth/react";
 
-export const useSocket = (room, username) => {
+export const useSocket = (room, username, senderId) => {
   const [socket, setSocket] = useState();
   const [socketResponse, setSocketResponse] = useState({
     room: "",
@@ -11,12 +11,13 @@ export const useSocket = (room, username) => {
     username: "",
     messageType: "",
     createdDateTime: "",
+    senderId: ""
   });
   const [isConnected, setConnected] = useState(false);
 
   const { data: session } = useSession();
   const fetchedUsername = session?.user?.name;
-
+  
   const sendData = useCallback(
     (payload) => {
       if (!socket) return;
@@ -25,12 +26,14 @@ export const useSocket = (room, username) => {
         content: payload.content,
         username: fetchedUsername,
         messageType: "CLIENT",
+        senderId: senderId
       });
     },
-    [socket, room, fetchedUsername]
+    [socket, room, fetchedUsername, senderId]
   );
 
   useEffect(() => {
+    if (!fetchedUsername) return; // If username is undefined, return early
     console.log("inside socket", room, fetchedUsername);
 
     const s = io(SOCKET_BASE_URL, {
@@ -56,3 +59,4 @@ export const useSocket = (room, username) => {
 
   return { socketResponse, isConnected, sendData };
 };
+
