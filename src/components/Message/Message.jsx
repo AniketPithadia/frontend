@@ -10,7 +10,6 @@ import { useFetch } from "../../customHooks/useFetch";
 
 export const Message = ({ room, username, senderId }) => {
   const { data: session } = useSession();
-  let fetchedUsername = session?.user?.name;
   const { isConnected, socketResponse, sendData } = useSocket(room, username, senderId);
   const [messageInput, setMessageInput] = useState("");
   const [messageList, setMessageList] = useState([]);
@@ -42,7 +41,7 @@ export const Message = ({ room, username, senderId }) => {
       const time = ""; //timeStampConverter(Math.floor(Date.now() / 1000));
       addMessageToList({
         content: messageInput,
-        username: fetchedUsername,
+        username: username,
         createdDateTime: new Date(),
         messageType: "CLIENT",
         senderId: senderId

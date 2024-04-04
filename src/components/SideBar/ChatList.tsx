@@ -12,23 +12,16 @@ function ChatList({ mySelf }: { mySelf: userProps }) {
     (state: any) => ({ users: state.users, setUsers: state.setUsers }),
     shallow
   );
-  // const socket = io("http://localhost:4000");
-  // useEffect(() => {
-  //   socket.on("new-user", () => {
-  //   fetchUsers(mySelf,setUsers)
-  // })
-  // },[])
 
   useEffect(() => {
     fetchUsers(mySelf, setUsers);
   }, []);
   return (
     <ul className="my-5 flex flex-col">
-      {/* ChatItem */}
       {users ? (
-        users
-          ?.reverse()
-          ?.map((user: any, key) => <ChatItem key={user?.userId} user={user} />)
+        users.reverse().map((user, key) => (
+          <ChatItem key={user.userId} user={user}/>
+        ))
       ) : (
         <span className="loading loading-ring w-16"></span>
       )}

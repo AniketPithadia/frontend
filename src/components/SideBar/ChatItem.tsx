@@ -1,18 +1,26 @@
 "use client";
-import { useSelectedUser } from "../../store/userStore";
-import { userProps } from "../../lib/types";
+import React, { useState } from "react";
 import Image from "next/image";
-import React from "react";
+import { useSelectedUser } from "../../store/userStore";
+import { useSession } from "next-auth/react";
+import { Message } from "../Message/Message";
+import { useSocket } from "../../customHooks/useSocket";
+import { userProps } from "../../lib/types";
 
 function ChatItem({ user }: { user: userProps }) {
+  const { data: session } = useSession();
+  const username = session?.user?.name;
+  const userId = session?.details?.userId;
+  const [showMessage, setShowMessage] = useState(false);
   const setSelectedUser = useSelectedUser((state) => state.setSelectedUser);
-  function handleClick(e: any) {
-    document.querySelector(".messages")?.classList.remove("hidden");
-    document.querySelector(".messages")?.classList.add("flex");
-    document.querySelector(".sidebar")?.classList.add("hidden");
-    document.querySelector(".selected-user")?.classList.remove("selected-user");
-    e.currentTarget.classList.add("selected-user");
+  
+  // Initiate socket connection
+  const { sendData } = useSocket();
+  
+  function handleClick() {
     setSelectedUser(user);
+    sendData({ roomId: user.roomId, username, userId });
+    setShowMessage(true);
   }
 
   return (
@@ -38,6 +46,7 @@ function ChatItem({ user }: { user: userProps }) {
         </div>
       </li>
       <div className="divider my-0"></div>
+      {showMessage && <Message username={username} room={user.roomId} senderId={userId} />}
     </>
   );
 }
