@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../../components/SideBar/Sidebar";
 import { Message } from "../../../components/Message/Message";
 import { useSession } from "next-auth/react";
-
+import AdminMessage from "../../../components/Message/AdminMessage";
 function Page() {
   const { data: session } = useSession();
   const username = session?.user?.name;
@@ -20,24 +20,26 @@ function Page() {
 
   const fetchRoomId = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/generateOrFetch');
+      const response = await fetch("http://localhost:8080/api/generateOrFetch");
       if (response.ok) {
         const data = await response.json();
         setRoomId(data.roomId);
         console.log("Room id", data.roomId);
       } else {
-        console.error('Failed to fetch or create room ID');
+        console.error("Failed to fetch or create room ID");
       }
     } catch (error) {
-      console.error('Error fetching or creating room ID:', error);
+      console.error("Error fetching or creating room ID:", error);
     }
   };
 
   return (
-    <div className="min-h-screen">
-      <div className="mx-auto flex">
+    <div className="h-full">
+      <div className="flex">
         <Sidebar />
-        <Message username={username} room={roomId} senderId={userId}/>
+        <div className="w-2/3">
+          <AdminMessage username={username} room={roomId} senderId={userId} />
+        </div>
       </div>
     </div>
   );

@@ -120,10 +120,7 @@
 }
 
 .chat-input {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
+  position: relative;
   height: 50px;
   width: 100%;
   background: #40434e;

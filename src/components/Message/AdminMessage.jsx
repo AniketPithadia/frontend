@@ -8,7 +8,7 @@ import { MessageList } from "./MessageList";
 import { timeStampConverter } from "../../lib/timeUtils";
 import { useFetch } from "../../customHooks/useFetch";
 
-export const Message = ({ room, username, senderId }) => {
+export default function AdminMessage({ room, username, senderId }) {
   const { data: session } = useSession();
   let fetchedUsername = session?.user?.name;
   const { isConnected, socketResponse, sendData } = useSocket(
@@ -83,4 +83,4 @@ export const Message = ({ room, username, senderId }) => {
       </div>
     </>
   );
-};
+}

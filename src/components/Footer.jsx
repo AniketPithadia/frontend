@@ -6,42 +6,32 @@ function Footer() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="col-span-1">
-            <h3 className="text-lg font-semibold mb-4">LiveAssist360</h3>
+            <h3 className="text-lg font-semibold mb-4">AutoDepot</h3>
             <p className="mb-4">
-              LiveAssist360 provides consistent, high quality customer service
-              in a simple month to month format. Brands and tech companies work
-              with us to make their support teams fast and flexible, while
-              maintaining standards. We call this support ops on demand.
+              AutoDepot offers a comprehensive platform for buying and selling
+              automobiles. We provide a seamless experience, connecting buyers
+              and sellers to facilitate smooth transactions.
             </p>
-            <p>© {new Date().getFullYear()} LiveAssist360. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} AutoDepot. All rights reserved.</p>
           </div>
 
           <div className="col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Product</h3>
+            <h3 className="text-lg font-semibold mb-4">Products</h3>
             <ul className="mb-4">
               <li>
-                <a href="#">How it works</a>
+                <a href="#">Find Your Dream Car</a>
               </li>
               <li>
-                <a href="#">Support as a Service</a>
+                <a href="#">Sell Your Car</a>
               </li>
               <li>
-                <a href="#">Dedicated support teams</a>
+                <a href="#">Auto Financing</a>
               </li>
               <li>
-                <a href="#">Sales assistants</a>
+                <a href="#">Trade-in Your Car</a>
               </li>
               <li>
-                <a href="#">Sales teams on demand</a>
-              </li>
-              <li>
-                <a href="#">Enterprise call centers</a>
-              </li>
-              <li>
-                <a href="#">Back office support</a>
-              </li>
-              <li>
-                <a href="#">All solutions</a>
+                <a href="#">Car Insurance</a>
               </li>
             </ul>
           </div>
@@ -50,28 +40,28 @@ function Footer() {
             <h3 className="text-lg font-semibold mb-4">Company</h3>
             <ul className="mb-4">
               <li>
-                <a href="#">About us</a>
+                <a href="#">About AutoDepot</a>
               </li>
               <li>
-                <a href="#">Get a quote</a>
+                <a href="#">Contact Us</a>
               </li>
               <li>
                 <a href="#">Pricing</a>
               </li>
               <li>
-                <a href="#">Client testimonials</a>
+                <a href="#">Customer Reviews</a>
               </li>
               <li>
-                <a href="#">Referral program</a>
+                <a href="#">Affiliate Program</a>
               </li>
               <li>
                 <a href="#">Careers</a>
               </li>
               <li>
-                <a href="#">Privacy policy</a>
+                <a href="#">Privacy Policy</a>
               </li>
               <li>
-                <a href="#">Terms of service</a>
+                <a href="#">Terms of Service</a>
               </li>
             </ul>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import AboutUsImg from "../assets/aboutusimg.svg";
+import AboutUsImg from "../assets/hero.png";
 import { Merriweather } from "next/font/google";
 import { FaComments } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -60,7 +60,7 @@ function SectionAboutUs() {
 
   return (
     <section id="aboutus h-screen">
-      <div className=" grid grid-cols-1 sm:grid-cols-2 bg-gradient-to-r from-bgAquaColor to-bgPurpleColor ">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 bg-gradient-to-r from-blue-400 to-indigo-500 ">
         <div className="grid grid-rows-4 pl-4 pr-4 sm:pl-5 sm:pr-5 md:pl-10 md:pr-10">
           <div className="h-auto"></div>
           <div className="flex align-top">
@@ -69,7 +69,10 @@ function SectionAboutUs() {
                 "text-3xl sm:text-5xl md:text-6xl align-middle text-white ${merriweather.className}"
               }
             >
-              Seamless Chat Support
+              Buy and Sell AutoMobiles At
+              <span className="inline-block  border-2 px-1 m-2  bg-white text-primaryColor rounded-lg border-white">
+                Best Price
+              </span>
             </p>
           </div>
           <div className="flex items-center gap-4 ">
@@ -117,7 +120,7 @@ function SectionAboutUs() {
           <div className="h-auto"></div>
         </div>
 
-        <div className="grid justify-end">
+        <div className="grid justify-center items-center">
           <Image
             alt="about us graphic"
             loading="eager"
