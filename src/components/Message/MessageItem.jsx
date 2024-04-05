@@ -19,13 +19,11 @@ export const MessageItem = ({ message, username }) => {
   return (
     <div className={"message_item_" + type + self}>
       {type != "server" && self == "" && (
-        <span className="message_item_username text-xs">
-          {message.username}
-        </span>
+        <span className="message_item_username">{message.username}</span>
       )}
       <div className={"message_content_" + type + self}>
         <span className="message_content_value">{message.content}</span>
-        <span className="text-xs">{time}</span>
+        <span>{time}</span>
       </div>
     </div>
   );
