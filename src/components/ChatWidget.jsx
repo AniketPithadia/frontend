@@ -7,7 +7,7 @@ function ChatWidget() {
   const [isChatPanelDisplayed, setIsChatPanelDisplayed] = useState(false);
 
   return (
-    <div className="fixed left-5 top-[690px]">
+    <div className="fixed right-5 top-[690px]">
       {isChatPanelDisplayed ? (
         <ChatPopUp
           toggleDisplay={() => setIsChatPanelDisplayed(!isChatPanelDisplayed)}

@@ -14,15 +14,17 @@ function Page() {
     setKey((prevKey) => prevKey + 1); // Incrementing key to force re-render
   }, [selectedUser]);
   return (
-    <div className="min-h-screen">
+    <div className="h-100">
       <div className="mx-auto flex">
         <Sidebar user={currentUser} />
-        <Message
-          key={key}
-          username={session?.data?.user?.name}
-          room={selectedUser?.roomId}
-          senderId={session?.data?.details?.userId}
-        />
+        <div className="w-3/4 relative ">
+          <Message
+            key={key}
+            username={session?.data?.user?.name}
+            room={selectedUser?.roomId}
+            senderId={session?.data?.details?.userId}
+          />
+        </div>
       </div>
     </div>
   );

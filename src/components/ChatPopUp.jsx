@@ -8,7 +8,7 @@ function ChatPopUp(props) {
   const { data: session } = useSession();
 
   return (
-    <div id="chat-container" className="fixed bottom-5 w-80">
+    <div id="chat-container" className="fixed right-5 bottom-5 w-80">
       <div className="bg-white shadow-md rounded-lg max-w-lg w-full">
         <div className="p-4 border-b bg-blue-900 text-white rounded-t-lg flex justify-between items-center">
           <p className="text-lg font-semibold">

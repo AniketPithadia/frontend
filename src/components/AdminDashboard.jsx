@@ -43,7 +43,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="mt-10 text-center">
-      <h1 className="text-3xl font-bold text-primaryColor">Admin Portal</h1>
+      <h1 className="text-3xl font-bold text-primaryColor">Settings</h1>
       <div className="flex flex-wrap mx-auto justify-center items-center gap-5 pt-20">
         {users &&
           users.map((user, key) => (

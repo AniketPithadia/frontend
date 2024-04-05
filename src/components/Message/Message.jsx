@@ -56,13 +56,7 @@ export const Message = ({ room, username, senderId }) => {
   };
 
   return (
-    <div className=" w-3/4 message_root_div">
-      {/* <span className="room_name">Room: {room} </span> */}
-      {session?.details?.role === "ADMIN" ? (
-        <span className="user_name">Welcome: {room} </span>
-      ) : (
-        ""
-      )}
+    <div className=" message_root_div">
       <div className="message_component">
         <MessageList username={username} messageList={messageList} />
         <form

@@ -56,7 +56,7 @@ function AdminSection() {
   };
 
   return (
-    <section id="aboutus h-screen">
+    <section id="aboutus h-screen overflow-hidden">
       <div className=" h-screen grid grid-cols-1 sm:grid-cols-2 bg-gradient-to-r from-cyan-600 to-bgPurpleColor ">
         <div className="grid  justify-center items-center pl-4 pr-4 sm:pl-5 sm:pr-5 md:pl-10 md:pr-10">
           <div className="flex flex-col align-bottom  gap-20">

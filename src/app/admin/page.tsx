@@ -6,8 +6,8 @@ const AdminPage = () => {
   const { data: session } = useSession();
   let isAdmin = session?.details?.role === "ADMIN" ? true : false;
   return (
-    <div className="h-screen">
-      <div className="text-center">
+    <div className="h-screen ">
+      <div className="text-center ">
         <AdminSection />
       </div>
     </div>

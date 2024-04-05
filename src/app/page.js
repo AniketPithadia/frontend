@@ -5,12 +5,14 @@ import SectionServices from "../components/SectionServices";
 
 import Footer from "../components/Footer";
 import ChatWidget from "../components/ChatWidget";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
   return (
     <div className="relative">
       <Navbar />
-      <ChatWidget />
+      {session?.details?.role === "ADMIN" ? <></> : <ChatWidget />}
       <SectionAboutUs />
       <SectionServices />
 

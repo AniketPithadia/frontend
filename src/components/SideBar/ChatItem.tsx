@@ -31,7 +31,7 @@ function ChatItem({ user }: { user: userProps }) {
     <>
       <li
         onClick={handleClick}
-        className="flex gap-3 cursor-pointer hover:bg-slate-300 p-5 rounded-lg"
+        className="flex gap-4 justify-center cursor-pointer hover:bg-slate-300 p-5 rounded-lg"
       >
         <div className="avatar">
           <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -44,7 +44,7 @@ function ChatItem({ user }: { user: userProps }) {
             />
           </div>
         </div>
-        <div className="hidden sm:flex flex-col justify-between ">
+        <div className="hidden sm:flex flex-col justify-center ">
           <h3 className="font-semibold text-black text-md lg:text-lg">
             {user?.username}
           </h3>
