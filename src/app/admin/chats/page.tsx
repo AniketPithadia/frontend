@@ -8,11 +8,17 @@ function Page() {
   const session = useSession();
   const currentUser = session?.data?.user;
   const selectedUser = useSelectedUser((state) => state.selectedUser);
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1); // Incrementing key to force re-render
+  }, [selectedUser]);
   return (
     <div className="min-h-screen">
       <div className="mx-auto flex">
         <Sidebar user={currentUser} />
         <Message
+          key={key}
           username={session?.data?.user?.name}
           room={selectedUser?.roomId}
           senderId={session?.data?.details?.userId}

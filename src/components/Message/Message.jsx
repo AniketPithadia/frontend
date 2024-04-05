@@ -59,7 +59,7 @@ export const Message = ({ room, username, senderId }) => {
     <div className=" w-3/4 message_root_div">
       {/* <span className="room_name">Room: {room} </span> */}
       {session?.details?.role === "ADMIN" ? (
-        <span className="user_name">Welcome: {username} </span>
+        <span className="user_name">Welcome: {room} </span>
       ) : (
         ""
       )}
