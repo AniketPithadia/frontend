@@ -57,6 +57,7 @@ export const Message = ({ room, username, senderId }) => {
 
   return (
     <div className=" message_root_div">
+      <input type="hidden" value={room}/>
       <div className="message_component">
         <MessageList username={username} messageList={messageList} />
         <form

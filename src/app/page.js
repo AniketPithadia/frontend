@@ -12,10 +12,9 @@ export default function Home() {
   return (
     <div className="relative">
       <Navbar />
-      {session?.details?.role === "ADMIN" ? <></> : <ChatWidget />}
+      {session && session.data?.role !== "ADMIN" && <ChatWidget />}      
       <SectionAboutUs />
       <SectionServices />
-
       <Footer />
     </div>
   );
