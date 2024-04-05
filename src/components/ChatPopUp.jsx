@@ -35,7 +35,7 @@ function ChatPopUp(props) {
             </svg>
           </button>
         </div>
-        <div id="chatbox" className="p-4 h-80 overflow-y-auto">
+        <div id="chatbox" className="pt-2 overflow-y-auto">
           {session && session.user ? (
             <BlockUser>
               <Message

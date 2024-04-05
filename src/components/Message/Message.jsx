@@ -66,7 +66,7 @@ export const Message = ({ room, username, senderId }) => {
       <div className="message_component">
         <MessageList username={username} messageList={messageList} />
         <form
-          className="chat-input rounded-none"
+          className="chat-input rounded-none w-full"
           onSubmit={(e) => sendMessage(e)}
         >
           <input

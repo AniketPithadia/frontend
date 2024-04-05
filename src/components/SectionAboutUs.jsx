@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AboutUsImg from "../assets/hero.png";
 import { Merriweather } from "next/font/google";
-import { FaComments } from "react-icons/fa";
+import { FaAngleDoubleDown, FaComments } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { signIn, useSession } from "next-auth/react";
 import { FaKey } from "react-icons/fa";
@@ -61,66 +61,26 @@ function SectionAboutUs() {
   return (
     <section id="aboutus h-screen">
       <div className=" grid grid-cols-1 sm:grid-cols-2 bg-gradient-to-r from-blue-400 to-indigo-500 ">
-        <div className="grid grid-rows-4 ps-4 pe-4 sm:ps-5 sm:pe-5 md:ps-10 md:pe-10">
-          <div className="h-auto"></div>
-          <div className="flex align-top">
+        <div className="grid py-20 md:p-20 md:py-24 lg:p-36 justify-center ">
+          <div className="flex flex-col md:items-start justify-center items-center gap-14 align-top">
             <p
               className={
-                "text-3xl sm:text-5xl md:text-6xl align-middle text-white ${merriweather.className}"
+                "text-3xl  sm:text-4xl md:text-6xl align-middle text-center sm:text-left text-white ${merriweather.className}"
               }
             >
               Buy and Sell AutoMobiles At
-              <span className="inline-block  border-2 px-1 m-2  bg-white text-primaryColor rounded-lg border-white">
+              <span className="inline-block  border-2 px-1 m-2 ms-0  bg-white text-primaryColor rounded-lg border-white">
                 Best Price
               </span>
             </p>
+            <button className="flex items-center justify-center w-[70%] md:w-[75%] gap-2 bg-white text-primaryColor  text-md lg:text-lg font-bold py-3 px-5 md:py-4 md:px-6 rounded-full">
+              <FaAngleDoubleDown size={20} />
+              Check Out Vehicles
+            </button>
           </div>
-          <div className="flex items-center gap-4 ">
-            <div
-              className={` ${
-                session && session.user
-                  ? "row-start-4 row-end-5"
-                  : "row-start-3 row-end-4"
-              }`}
-            >
-              <ChatWidget />
-              {/* {session && session.user ? (
-          <div className="items-center gap-4">
-              </div>
-            ) : (
-              <div className="flex flex-col md:flex-row gap-2">
-                <div
-                  type="button"
-                  className="pt-1"
-                  onClick={() => {
-                    signIn("google");
-                  }}
-                >
-                  <div className=" bg-white text-primaryColor bg-opacity-50 flex gap-5 pt-3 pb-3 pl-10 pr-10 text-xl justify-center items-center rounded-full hover:cursor-pointer">
-                    <FcGoogle size={22} />
-                    Sign In With Google
-                  </div>
-                </div>
-                <div
-                  type="button"
-                  className="pt-1"
-                  onClick={() => {
-                    signIn("keycloak");
-                  }}
-                >
-                  <div className=" bg-white text-primaryColor bg-opacity-50 flex gap-5 pt-3 pb-3 px-10 text-xl justify-center items-center rounded-full hover:cursor-pointer">
-                    <FaKey size={22} />
-                    Sign In With Email
-                  </div>
-                </div>
-              </div>
-            )} */}
-            </div>
-          </div>
-          <div className="h-auto"></div>
         </div>
 
-        <div className="grid justify-center items-center">
+        <div className="grid  justify-center items-center">
           <Image
             alt="about us graphic"
             loading="eager"

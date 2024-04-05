@@ -7,7 +7,7 @@ function ChatWidget() {
   const [isChatPanelDisplayed, setIsChatPanelDisplayed] = useState(false);
 
   return (
-    <div>
+    <div className="fixed left-5 top-[690px]">
       {isChatPanelDisplayed ? (
         <ChatPopUp
           toggleDisplay={() => setIsChatPanelDisplayed(!isChatPanelDisplayed)}
@@ -15,9 +15,9 @@ function ChatWidget() {
       ) : (
         <button
           onClick={() => setIsChatPanelDisplayed(!isChatPanelDisplayed)}
-          className="z-100 text-white hover:scale-110 flex flex-col shrink-0 grow-0 justify-around rounded-lg"
+          className="z-100 text-white transition-transform hover:scale-110 flex flex-col shrink-0 grow-0 justify-around rounded-lg"
         >
-          <div className="p-2 rounded-full border-4 border-white">
+          <div className="p-2 rounded-full border-4 border-white bg-primaryColor">
             <svg
               className="w-8 h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12"
               fill="currentColor"

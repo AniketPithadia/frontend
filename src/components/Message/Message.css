@@ -4,6 +4,7 @@
   justify-content: flex-start; /* Change this to flex-start */
   align-items: stretch; /* Change this to stretch */
   height: 100%;
+  width: 100%;
 }
 .message_component {
   display: flex;
@@ -117,7 +118,8 @@
 }
 
 .chat-input {
-  flex: 0 0 auto;
+  position: absolute;
+  bottom: 0;
   display: flex;
   align-items: center;
   height: 70px;
@@ -182,7 +184,7 @@
 }
 
 #chatbox {
-  width: 351px;
   width: 100%;
-  margin-top: 40px;
+  height: 350px;
+  margin-top: 20px;
 }

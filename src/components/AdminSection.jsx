@@ -57,41 +57,40 @@ function AdminSection() {
 
   return (
     <section id="aboutus h-screen">
-      <div className=" grid grid-cols-1 sm:grid-cols-2 bg-gradient-to-r from-cyan-600 to-bgPurpleColor ">
-        <div className="grid grid-rows-4 pl-4 pr-4 sm:pl-5 sm:pr-5 md:pl-10 md:pr-10">
-          <div className="h-auto"></div>
-          <div className="flex align-bottom md:ps-20">
+      <div className=" h-screen grid grid-cols-1 sm:grid-cols-2 bg-gradient-to-r from-cyan-600 to-bgPurpleColor ">
+        <div className="grid  justify-center items-center pl-4 pr-4 sm:pl-5 sm:pr-5 md:pl-10 md:pr-10">
+          <div className="flex flex-col align-bottom  gap-20">
             <p
               className={
-                "text-3xl md:text-5xl align-middle text-white ${merriweather.className}"
+                "text-3xl md:text-6xl align-middle text-white ${merriweather.className}"
               }
             >
               {!isAdmin ? "Admin Login" : "Welcome Admin"}
             </p>
-          </div>
-          <div className="flex items-center md:ps-20">
-            <div>
-              {!isAdmin ? (
-                <button
-                  className="flex items-center gap-2 bg-blue-800 text-white  text-lg md:text-xl font-bold py-5 px-8 rounded-full"
-                  onClick={() => {
-                    signIn("keycloak");
-                  }}
-                >
-                  <FaKey size={22} />
-                  Sign In To Continue
-                </button>
-              ) : (
-                <Link
-                  href={"/admin/dashboard"}
-                  className="flex items-center gap-2 bg-blue-800 text-white  text-lg lg:text-xl font-bold py-5 px-8 rounded-full"
-                >
-                  Admin Dashboard
-                </Link>
-              )}
+
+            <div className="flex items-center ">
+              <div>
+                {!isAdmin ? (
+                  <button
+                    className="flex items-center gap-2 bg-blue-800 text-white  text-lg md:text-xl font-bold py-5 px-8 rounded-full"
+                    onClick={() => {
+                      signIn("keycloak");
+                    }}
+                  >
+                    <FaKey size={22} />
+                    Sign In To Continue
+                  </button>
+                ) : (
+                  <Link
+                    href={"/admin/dashboard"}
+                    className="flex items-center gap-2 bg-blue-800 text-white  text-lg lg:text-xl font-bold py-5 px-8 rounded-full"
+                  >
+                    Admin Dashboard
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
-          <div className="h-auto"></div>
         </div>
 
         <div className="grid justify-end">

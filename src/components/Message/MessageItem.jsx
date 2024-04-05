@@ -6,7 +6,7 @@ import "./Message.css";
 export const MessageItem = ({ message, username }) => {
   const type = message.messageType.toLowerCase();
   const self = message.username == username ? "_self" : "";
-  
+
   const formatTime = (dateTimeString) => {
     const date = new Date(dateTimeString);
     const hours = date.getHours().toString().padStart(2, "0");
@@ -19,7 +19,9 @@ export const MessageItem = ({ message, username }) => {
   return (
     <div className={"message_item_" + type + self}>
       {type != "server" && self == "" && (
-        <span className="message_item_username">{message.username}</span>
+        <span className="message_item_username text-xs">
+          {message.username}
+        </span>
       )}
       <div className={"message_content_" + type + self}>
         <span className="message_content_value">{message.content}</span>

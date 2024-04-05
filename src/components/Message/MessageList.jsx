@@ -11,11 +11,11 @@ export const MessageList = ({ messageList, username }) => {
   useEffect(scrollToBottom, [messageList]);
 
   return (
-    <div className="message_list">
+    <div className="message_list mb-2">
       {messageList.map((x, idx) => (
         <MessageItem key={idx} message={x} username={username} />
       ))}
-      <div ref={messagesEndRef} />
+      <div ref={messagesEndRef} className="mb-20" />
     </div>
   );
 };
