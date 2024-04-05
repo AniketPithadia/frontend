@@ -4,11 +4,12 @@ declare module "next-auth" {
   interface Session {
     details: {
       email: string;
-      isActive: string;
+      connectionStatus: string;
       profilePicture: string;
       providerId: string;
       role: string;
-      status: string;
+      roomId: string;
+      userStatus: string;
       userId: number;
       username: string;
     } & DefaultSession["user"];

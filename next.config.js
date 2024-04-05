@@ -2,7 +2,12 @@
 
 module.exports = {
   images: {
-    domains: ["www.google.com", "lh3.googleusercontent.com"],
+    domains: [
+      "www.google.com",
+      "lh3.googleusercontent.com",
+      "images.pexels.com",
+      "www.shutterstock.com",
+    ],
   },
   async headers() {
     return [

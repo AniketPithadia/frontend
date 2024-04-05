@@ -7,10 +7,15 @@ import { useSession } from "next-auth/react";
 import { MessageList } from "./MessageList";
 import { timeStampConverter } from "../../lib/timeUtils";
 import { useFetch } from "../../customHooks/useFetch";
+import { triggerSocket } from "../../store/userStore";
 
 export const Message = ({ room, username, senderId }) => {
   const { data: session } = useSession();
-  const { isConnected, socketResponse, sendData } = useSocket(room, username, senderId);
+  const { isConnected, socketResponse, sendData } = useSocket(
+    room,
+    username,
+    senderId
+  );
   const [messageInput, setMessageInput] = useState("");
   const [messageList, setMessageList] = useState([]);
 
@@ -44,26 +49,33 @@ export const Message = ({ room, username, senderId }) => {
         username: username,
         createdDateTime: new Date(),
         messageType: "CLIENT",
-        senderId: senderId
+        senderId: senderId,
       });
       setMessageInput("");
     }
   };
 
   return (
-    <div className="message_root_div">
+    <div className=" w-3/4 message_root_div">
       {/* <span className="room_name">Room: {room} </span> */}
-      {session?.details?.role === "ADMIN" ? <span className="user_name">Welcome: {username} </span> : "" }
+      {session?.details?.role === "ADMIN" ? (
+        <span className="user_name">Welcome: {username} </span>
+      ) : (
+        ""
+      )}
       <div className="message_component">
         <MessageList username={username} messageList={messageList} />
-        <form className="chat-input" onSubmit={(e) => sendMessage(e)}>
+        <form
+          className="chat-input rounded-none"
+          onSubmit={(e) => sendMessage(e)}
+        >
           <input
             type="text"
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
             placeholder="Type a message"
           />
-          <button type="submit">
+          <button type="submit" className="hidden">
             {messageInput == "" ? (
               <RiSendPlaneLine size={25} />
             ) : (

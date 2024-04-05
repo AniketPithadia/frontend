@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { useSelectedUser } from "../../store/userStore";
+import { triggerSocket, useSelectedUser } from "../../store/userStore";
 import { useSession } from "next-auth/react";
 import { Message } from "../Message/Message";
 import { useSocket } from "../../customHooks/useSocket";
@@ -12,14 +12,18 @@ function ChatItem({ user }: { user: userProps }) {
   const username = session?.user?.name;
   const userId = session?.details?.userId;
   const [showMessage, setShowMessage] = useState(false);
-  const setSelectedUser = useSelectedUser((state) => state.setSelectedUser);
-  
+  const { selectedUser, setSelectedUser } = useSelectedUser((state) => ({
+    setSelectedUser: state.setSelectedUser,
+    selectedUser: user,
+  }));
+
   // Initiate socket connection
   const { sendData } = useSocket();
-  
+
   function handleClick() {
     setSelectedUser(user);
-    sendData({ roomId: user.roomId, username, userId });
+    console.log("selectedUser", selectedUser);
+    sendData({ roomId: selectedUser.roomId, username, userId });
     setShowMessage(true);
   }
 
@@ -40,13 +44,16 @@ function ChatItem({ user }: { user: userProps }) {
             />
           </div>
         </div>
-        <div className="flex flex-col justify-between">
-          <h3 className="font-semibold text-black text-lg">{user?.username}</h3>
-          <p className="text-[#707991]">{user?.connectionStatus}</p>
+        <div className="hidden sm:flex flex-col justify-between ">
+          <h3 className="font-semibold text-black text-md lg:text-lg">
+            {user?.username}
+          </h3>
+          <p className="text-[#707991] text-xs lg:text-md">
+            {user?.connectionStatus}
+          </p>
         </div>
       </li>
-      <div className="divider my-0"></div>
-      {showMessage && <Message username={username} room={user.roomId} senderId={userId} />}
+      <div className="border border-1 w-100 my-2 border-gray-200"></div>
     </>
   );
 }

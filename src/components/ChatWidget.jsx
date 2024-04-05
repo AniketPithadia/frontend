@@ -1,36 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { signIn, useSession } from 'next-auth/react';
-import ChatPopUp from './ChatPopUp';
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
+import ChatPopUp from "./ChatPopUp";
+import Link from "next/link";
 
 function ChatWidget() {
-  const { data: session } = useSession();
   const [isChatPanelDisplayed, setIsChatPanelDisplayed] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    if (session && session.user && session.details.role === 'ADMIN') {
-      setIsAdmin(true);
-    }
-  }, [session]);
-
-  const handleChatButtonClick = () => {
-    if (isAdmin) {
-      window.location.href = '/admin/chats';
-    } else {
-      setIsChatPanelDisplayed(true);
-    }
-  };
 
   return (
     <div>
       {isChatPanelDisplayed ? (
-        <div toggleDisplay={() => setIsChatPanelDisplayed(false)}>
-          <ChatPopUp />
-        </div>
+        <ChatPopUp
+          toggleDisplay={() => setIsChatPanelDisplayed(!isChatPanelDisplayed)}
+        />
       ) : (
         <button
-          onClick={handleChatButtonClick}
+          onClick={() => setIsChatPanelDisplayed(!isChatPanelDisplayed)}
           className="z-100 text-white hover:scale-110 flex flex-col shrink-0 grow-0 justify-around rounded-lg"
         >
           <div className="p-2 rounded-full border-4 border-white">

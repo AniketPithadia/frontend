@@ -15,7 +15,7 @@ export const MessageItem = ({ message, username }) => {
       )}
       <div className={"message_content_" + type + self}>
         <span className="message_content_value">{message.content}</span>
-        <span>{time}</span>
+        <span className="text-xs">{time}</span>
       </div>
     </div>
   );

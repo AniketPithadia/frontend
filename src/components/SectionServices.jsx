@@ -11,7 +11,7 @@ function SectionServices() {
   return (
     <section
       id="services"
-      className="h-screen flex justify-center items-center pt-20  bg-gradient-to-r from-bgAquaColor to-bgPurpleColor"
+      className="h-screen flex justify-center items-center pt-20  bg-gradient-to-r from-blue-400 to-indigo-500 "
     >
       <div className="bg-opacity-50 bg-white p-24 rounded-lg">
         <div className="text-center mb-8">
