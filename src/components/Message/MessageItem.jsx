@@ -6,7 +6,15 @@ import "./Message.css";
 export const MessageItem = ({ message, username }) => {
   const type = message.messageType.toLowerCase();
   const self = message.username == username ? "_self" : "";
-  const time = timeStampConverter(message.createdDateTime);
+  
+  const formatTime = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`;
+  };
+
+  const time = formatTime(message.createdDateTime);
 
   return (
     <div className={"message_item_" + type + self}>

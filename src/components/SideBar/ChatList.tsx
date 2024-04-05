@@ -16,10 +16,21 @@ function ChatList({ mySelf }: { mySelf: userProps }) {
   useEffect(() => {
     fetchUsers(mySelf, setUsers);
   }, []);
+
+  const sortedUsers = users?.sort((a, b) => {
+    if (a.connectionStatus === "ONLINE" && b.connectionStatus !== "ONLINE") {
+      return -1; // a comes first if a is online and b is not
+    } else if (a.connectionStatus !== "ONLINE" && b.connectionStatus === "ONLINE") {
+      return 1; // b comes first if b is online and a is not
+    } else {
+      return 0; // maintain existing order for other cases
+    }
+  });
+
   return (
     <ul className="my-5 flex flex-col">
-      {users ? (
-        users.reverse().map((user, key) => (
+      {sortedUsers ? (
+        sortedUsers.map((user, key) => (
           <ChatItem key={user.userId} user={user}/>
         ))
       ) : (
