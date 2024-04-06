@@ -104,7 +104,7 @@ function Navbar() {
                 width="48"
                 height="48"
                 className="rounded-full object-contain"
-                alt="avatar"
+                alt={session?.details?.username}
               />
             </button>
 
@@ -186,7 +186,7 @@ function Navbar() {
                         width="48"
                         height="48"
                         className="rounded-full object-contain"
-                        alt="avatar"
+                        alt={session?.details?.username}
                       />
                     </button>
                     {fullScreenDrop && (

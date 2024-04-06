@@ -40,7 +40,7 @@ function ChatItem({ user }: { user: userProps }) {
               width={256}
               height={256}
               className="rounded-full"
-              alt="avatar"
+              alt={user?.username}
             />
           </div>
         </div>

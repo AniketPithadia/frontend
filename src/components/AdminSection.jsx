@@ -65,7 +65,7 @@ function AdminSection() {
                 "text-3xl md:text-6xl align-middle text-white ${merriweather.className}"
               }
             >
-              {!isAdmin ? "Admin Login" : "Welcome Admin"}
+              {!isAdmin ? <span>Admin Login</span> : <span>Welcome, {session.details?.username}</span>}
             </p>
 
             <div className="flex items-center ">
@@ -82,10 +82,10 @@ function AdminSection() {
                   </button>
                 ) : (
                   <Link
-                    href={"/admin/dashboard"}
+                    href={"/admin/chats"}
                     className="flex items-center gap-2 bg-blue-800 text-white  text-lg lg:text-xl font-bold py-5 px-8 rounded-full"
                   >
-                    Admin Dashboard
+                    Admin Chats
                   </Link>
                 )}
               </div>
