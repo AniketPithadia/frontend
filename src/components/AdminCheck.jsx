@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 
 export default function AuthCheck({ children }) {
   const { data: session } = useSession();
-  console.log(session);
   const router = useRouter();
   if (session?.details?.role !== "ADMIN") {
     router.push("/");

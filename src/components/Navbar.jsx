@@ -1,6 +1,5 @@
 "use client";
-import Image from "next/image";
-import logo from "../assets/cardepot.svg";
+
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
@@ -9,7 +8,7 @@ import "./Message/Message.css";
 import Logo from "./Logo";
 function Navbar() {
   const { data: session } = useSession();
-  const isAdmin = session?.details?.role === "ADMIN" ? true : false;
+
   const [username, setUsername] = useState("");
 
   function capitalizeName(name) {
@@ -52,40 +51,6 @@ function Navbar() {
         <Link href="/">
           <Logo />
         </Link>
-        <div>
-          <ul className="text-primaryColor font-light  flex justify-center gap-5">
-            {/* Your navigation links */}
-            {session && session.user && (
-              <>
-                <li className="hover:font-normal hover:cursor-pointer">
-                  {username}
-                </li>
-                {isAdmin && (
-                  <>
-                    <Link
-                      href="/admin"
-                      className="hover:font-normal hover:cursor-pointer"
-                    >
-                      Admin Dashboard
-                    </Link>
-                    <Link
-                      href="/admin/chats"
-                      className="hover:font-normal hover:cursor-pointer"
-                    >
-                      Inbox
-                    </Link>
-                  </>
-                )}
-                <li
-                  className="hover:font-normal hover:cursor-pointer"
-                  onClick={handleSignOut}
-                >
-                  Sign Out
-                </li>
-              </>
-            )}
-          </ul>
-        </div>
       </div>
     </nav>
   );

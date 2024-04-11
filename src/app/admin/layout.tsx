@@ -1,12 +1,12 @@
 "use client";
 
-import Navbar from "../../components/Navbar";
-import AdminCheck from "../../components/AdminCheck";
+import AdminNavbar from "../../components/AdminNavbar";
+
 export default function AdminLayout({ children }) {
   return (
     <div>
-      <Navbar />
-      <AdminCheck>{children}</AdminCheck>
+      <AdminNavbar />
+      {children}
     </div>
   );
 }

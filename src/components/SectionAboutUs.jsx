@@ -61,7 +61,7 @@ function SectionAboutUs() {
   return (
     <section id="aboutus h-screen">
       <div className=" grid grid-cols-1 sm:grid-cols-2 bg-gradient-to-r from-blue-400 to-indigo-500 ">
-        <div className="grid grid-rows-4 pl-4 pr-4 sm:pl-5 sm:pr-5 md:pl-10 md:pr-10">
+        <div className="grid grid-rows-4 ps-4 pe-4 sm:ps-5 sm:pe-5 md:ps-10 md:pe-10">
           <div className="h-auto"></div>
           <div className="flex align-top">
             <p
@@ -83,9 +83,9 @@ function SectionAboutUs() {
                   : "row-start-3 row-end-4"
               }`}
             >
-              <ChatWidget />
+              {session && session.data?.role ==! "ADMIN" && <ChatWidget />}
               {/* {session && session.user ? (
-          <div className="items-center gap-4">
+                <div className="items-center gap-4">
               </div>
             ) : (
               <div className="flex flex-col md:flex-row gap-2">

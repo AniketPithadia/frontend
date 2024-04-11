@@ -12,23 +12,30 @@ function ChatList({ mySelf }: { mySelf: userProps }) {
     (state: any) => ({ users: state.users, setUsers: state.setUsers }),
     shallow
   );
-  // const socket = io("http://localhost:4000");
-  // useEffect(() => {
-  //   socket.on("new-user", () => {
-  //   fetchUsers(mySelf,setUsers)
-  // })
-  // },[])
 
   useEffect(() => {
     fetchUsers(mySelf, setUsers);
   }, []);
+
+  const sortedUsers = users?.sort((a, b) => {
+    if (a.connectionStatus === "ONLINE" && b.connectionStatus !== "ONLINE") {
+      return -1; // a comes first if a is online and b is not
+    } else if (
+      a.connectionStatus !== "ONLINE" &&
+      b.connectionStatus === "ONLINE"
+    ) {
+      return 1; // b comes first if b is online and a is not
+    } else {
+      return 0; // maintain existing order for other cases
+    }
+  });
+
   return (
-    <ul className="my-5 flex flex-col">
-      {/* ChatItem */}
-      {users ? (
-        users
-          ?.reverse()
-          ?.map((user: any, key) => <ChatItem key={user?.userId} user={user} />)
+    <ul className="my-2 flex flex-col ">
+      {sortedUsers ? (
+        sortedUsers.map((user, key) => (
+          <ChatItem key={user.userId} user={user} />
+        ))
       ) : (
         <span className="loading loading-ring w-16"></span>
       )}

@@ -46,7 +46,6 @@ export async function fetchUser(
 export async function fetchUsers(mySelf: userProps, setUsers: any) {
   const data = await fetch(`${API_BASE_URL}/api/users`);
   const myUsers = await data.json();
-  console.log(myUsers);
   setUsers(myUsers.filter((user: any) => user.email !== mySelf?.email));
 }
 

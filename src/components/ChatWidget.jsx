@@ -1,39 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import ChatPopUp from "./ChatPopUp";
 import Link from "next/link";
 
 function ChatWidget() {
-  const { data: session } = useSession();
   const [isChatPanelDisplayed, setIsChatPanelDisplayed] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const handleSignOut = async () => {
+    try {
+      const userId = session.details?.userId; // Assuming user ID is accessible from session
 
-  useEffect(() => {
-    if (session && session.user && session.details.role === "ADMIN") {
-      setIsAdmin(true);
+      await fetch("http://localhost:8080/api/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: userId }), // Send userId in the request body as JSON
+      });
+    } catch (error) {
+      console.error("Error updating user status:", error);
     }
-  }, [session]);
-
-  const handleChatButtonClick = () => {
-    if (isAdmin) {
-      window.location.href = "/admin/chats";
-    } else {
-      setIsChatPanelDisplayed(true);
-    }
+    signOut(); // Sign out the user after updating status
   };
-
   return (
-    <div>
+    <div className="fixed right-5 top-[690px]">
       {isChatPanelDisplayed ? (
         <ChatPopUp
           toggleDisplay={() => setIsChatPanelDisplayed(!isChatPanelDisplayed)}
+          handleSignOut={() => handleSignOut()}
         />
       ) : (
         <button
-          onClick={handleChatButtonClick}
-          className="z-100 text-white hover:scale-110 flex flex-col shrink-0 grow-0 justify-around rounded-lg"
+          onClick={() => setIsChatPanelDisplayed(!isChatPanelDisplayed)}
+          className="z-100 text-white transition-transform hover:scale-110 flex flex-col shrink-0 grow-0 justify-around rounded-lg"
         >
-          <div className="p-2 rounded-full border-4 border-white">
+          <div className="p-2 rounded-full border-4 border-white bg-primaryColor">
             <svg
               className="w-8 h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12"
               fill="currentColor"

@@ -3,42 +3,27 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../../components/SideBar/Sidebar";
 import { Message } from "../../../components/Message/Message";
 import { useSession } from "next-auth/react";
-import AdminMessage from "../../../components/Message/AdminMessage";
+import { useSelectedUser } from "../../../store/userStore";
 function Page() {
-  const { data: session } = useSession();
-  const username = session?.user?.name;
-  const userId = session?.details?.userId;
-  const [sessionFetched, setSessionFetched] = useState(false);
-  const [roomId, setRoomId] = useState(null);
+  const session = useSession();
+  const currentUser = session?.data?.user;
+  const selectedUser = useSelectedUser((state) => state.selectedUser);
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
-    if (!sessionFetched && session) {
-      setSessionFetched(true);
-      fetchRoomId();
-    }
-  }, [session, sessionFetched]);
-
-  const fetchRoomId = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/api/generateOrFetch");
-      if (response.ok) {
-        const data = await response.json();
-        setRoomId(data.roomId);
-        console.log("Room id", data.roomId);
-      } else {
-        console.error("Failed to fetch or create room ID");
-      }
-    } catch (error) {
-      console.error("Error fetching or creating room ID:", error);
-    }
-  };
-
+    setKey((prevKey) => prevKey + 1); // Incrementing key to force re-render
+  }, [selectedUser]);
   return (
-    <div className="h-full">
-      <div className="flex">
-        <Sidebar />
-        <div className="w-2/3">
-          <AdminMessage username={username} room={roomId} senderId={userId} />
+    <div className="h-100">
+      <div className="mx-auto flex">
+        <Sidebar user={currentUser} />
+        <div className="w-3/4 relative ">
+          <Message
+            key={key}
+            username={session?.data?.user?.name}
+            room={selectedUser?.roomId}
+            senderId={session?.data?.details?.userId}
+          />
         </div>
       </div>
     </div>

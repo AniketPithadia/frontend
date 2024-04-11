@@ -4,7 +4,8 @@ export interface userProps {
   profilePicture: string;
   providerId: string;
   role: string;
-  status: string;
+  roomId: string;
+  userStatus: string;
   userId: number;
   username: string;
 }

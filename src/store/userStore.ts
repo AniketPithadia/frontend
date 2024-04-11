@@ -20,3 +20,11 @@ export const useMessages = create((set) => ({
   message: undefined,
   setMessages: (messages: any) => set({ messages }),
 }));
+
+export const triggerSocket = create((set) => ({
+  roomId: undefined,
+  username: undefined,
+  userId: undefined,
+  setSocket: ({ roomId, username, userId }: any) =>
+    set({ roomId, username, userId }),
+}));
