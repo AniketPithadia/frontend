@@ -59,12 +59,18 @@ export const Message = ({ room, username, senderId }) => {
 
   return (
     <div className=" message_root_div">
+<<<<<<< HEAD
       <div className="message_component">
         <MessageList
           username={username}
           messageList={messageList}
           roomId={room}
         />
+=======
+      <input type="hidden" value={room}/>
+      <div className="message_component">
+        <MessageList username={username} messageList={messageList} roomId={room} />
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
         <form
           className="chat-input rounded-none w-full"
           onSubmit={(e) => sendMessage(e)}

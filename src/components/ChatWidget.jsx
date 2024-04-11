@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { signIn, signOut, useSession } from "next-auth/react";
+=======
+import { signIn, useSession } from "next-auth/react";
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
 import ChatPopUp from "./ChatPopUp";
 import Link from "next/link";
 
 function ChatWidget() {
   const [isChatPanelDisplayed, setIsChatPanelDisplayed] = useState(false);
+<<<<<<< HEAD
   const handleSignOut = async () => {
     try {
       const userId = session.details?.userId; // Assuming user ID is accessible from session
@@ -21,12 +26,18 @@ function ChatWidget() {
     }
     signOut(); // Sign out the user after updating status
   };
+=======
+
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
   return (
     <div className="fixed right-5 top-[690px]">
       {isChatPanelDisplayed ? (
         <ChatPopUp
           toggleDisplay={() => setIsChatPanelDisplayed(!isChatPanelDisplayed)}
+<<<<<<< HEAD
           handleSignOut={() => handleSignOut()}
+=======
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
         />
       ) : (
         <button

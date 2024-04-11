@@ -97,6 +97,7 @@ function Navbar() {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={toggleDropdown}
+<<<<<<< HEAD
               className="text-primaryColor cursor-pointer font-light focus:outline-none w-12 h-12 rounded-full  ring ring-primary ring-offset-base-100 ring-offset-2"
             >
               {session?.details?.profilePicture ? (
@@ -117,6 +118,17 @@ function Navbar() {
                   className="object-contain rounded-full"
                 />
               )}
+=======
+              className="text-primaryColor font-light focus:outline-none w-12 h-12 rounded-full  ring ring-primary ring-offset-base-100 ring-offset-2"
+            >
+              <Image
+                src={session?.details?.profilePicture}
+                width="48"
+                height="48"
+                className="rounded-full object-contain"
+                alt={session?.details?.username}
+              />
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
             </button>
 
             {isDropDownOpen && (
@@ -127,7 +139,11 @@ function Navbar() {
                     onClick={toggleDropdown}
                   >
                     <li className="w-full  text-right border-b border-1 border-gray-300">
+<<<<<<< HEAD
                       <Link href="/admin" className="hover:cursor-pointer">
+=======
+                      <Link href="/admin">
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                         <p className="block px-4 py-2 text-md hover:bg-gray-100">
                           {username.split(" ")[0]}
                         </p>
@@ -135,20 +151,28 @@ function Navbar() {
                     </li>
 
                     <li className="w-full text-right  border-b border-1 border-gray-300">
+<<<<<<< HEAD
                       <Link
                         href="/admin/chats"
                         className="hover:cursor-pointer"
                       >
+=======
+                      <Link href="/admin/chats">
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                         <p className="block px-4 py-2 hover:bg-gray-100">
                           Chats
                         </p>
                       </Link>
                     </li>
                     <li className="w-full  text-right border-b border-1 border-gray-300">
+<<<<<<< HEAD
                       <Link
                         href="/admin/dashboard"
                         className="hover:cursor-pointer"
                       >
+=======
+                      <Link href="/admin/dashboard">
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                         <p className="block px-4 py-2 text-md hover:bg-gray-100">
                           Settings
                         </p>
@@ -157,7 +181,11 @@ function Navbar() {
                     <li>
                       <button
                         onClick={handleSignOut}
+<<<<<<< HEAD
                         className="block px-4 py-2 hover:bg-gray-100 w-full text-left hover:cursor-pointer"
+=======
+                        className="block px-4 py-2 hover:bg-gray-100 w-full text-left"
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                       >
                         Sign Out
                       </button>
@@ -167,7 +195,11 @@ function Navbar() {
                   <li>
                     <button
                       onClick={() => signIn("keycloak")}
+<<<<<<< HEAD
                       className="block px-4 py-2 hover:bg-gray-100 w-full text-left cursor-pointer"
+=======
+                      className="block px-4 py-2 hover:bg-gray-100 w-full text-left"
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                     >
                       Admin Login
                     </button>
@@ -196,7 +228,11 @@ function Navbar() {
                   <div className="relative" ref={dropdownRef}>
                     <button
                       onClick={() => setFullScreenDrop(!fullScreenDrop)}
+<<<<<<< HEAD
                       className="text-primaryColor font-light focus:outline-none w-12 h-12 rounded-full  ring ring-primary ring-offset-base-100 ring-offset-2 cursor-pointer"
+=======
+                      className="text-primaryColor font-light focus:outline-none w-12 h-12 rounded-full  ring ring-primary ring-offset-base-100 ring-offset-2"
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                     >
                       <Image
                         src={session?.details?.profilePicture}
@@ -211,13 +247,21 @@ function Navbar() {
                         onClick={toggleDropdown}
                         className="absolute right-0 mt-1 px-4 w-36 bg-white  text-primaryColor border border-gray-200 rounded-lg shadow-lg z-30"
                       >
+<<<<<<< HEAD
                         <li className="block hover:cursor-pointer border-b border-1 border-gray-300 px-4 py-2 hover:bg-gray-100 w-full text-right">
+=======
+                        <li className="block  border-b border-1 border-gray-300 px-4 py-2 hover:bg-gray-100 w-full text-right">
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                           {username.split(" ")[0]}
                         </li>
                         <li>
                           <button
                             onClick={handleSignOut}
+<<<<<<< HEAD
                             className="block px-4 py-2 hover:cursor-pointer hover:bg-gray-100 w-full text-right"
+=======
+                            className="block px-4 py-2 hover:bg-gray-100 w-full text-right"
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                           >
                             Sign Out
                           </button>

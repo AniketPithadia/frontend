@@ -46,74 +46,73 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="mt-10 text-center">
-      <button
-        className="flex gap-2 ms-4 text-primaryColor"
-        onClick={() => router.back()}
-      >
-        <IoArrowBack size={24} /> Back
-      </button>
-      <h1 className="text-3xl font-bold text-primaryColor">Settings</h1>
-      <div className="mt-10 mx-auto max-w-4xl p-2">
-        <table className="w-full border-collapse border border-gray-300  ">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="border border-gray-300 py-2 px-4">User</th>
-              <th className="border border-gray-300 py-2 px-4">Status</th>
-              <th className="border border-gray-300 py-2 px-4">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, key) => (
-              <tr key={key} className="bg-white">
-                <td className="border border-gray-300 py-2 px-4 text-center flex justify-center w-100 ">
-                  <div className="flex gap-3 items-center w-full justify-center">
-                    {user.profilePicture ? (
-                      <Image
-                        alt="user image"
-                        priority={true}
-                        src={user.profilePicture}
-                        width={50}
-                        height={50}
-                        className="object-contain rounded-full"
-                      />
-                    ) : (
-                      <Image
-                        alt="user image"
-                        priority={true}
-                        src={defaultUser}
-                        width={50}
-                        height={50}
-                        className="object-contain rounded-full"
-                      />
-                    )}
-                    <span>{user.username}</span>
-                  </div>
-                </td>
-                <td className="border border-gray-300 py-2 px-4 w-100 ">
-                  {getStatusLabel(user.userStatus)}
-                </td>
-                <td className="border border-gray-300 py-2 px-4 w-100 ">
-                  <button
-                    onClick={() =>
-                      changeStatusOfUser(user.userId, user.userStatus)
-                    }
-                    className={`${
-                      user.userStatus === "ACTIVE"
-                        ? "bg-red-500 hover:bg-red-700"
-                        : "bg-blue-500 hover:bg-blue-700"
-                    } text-white font-bold py-1 outline-none px-3 rounded `}
-                  >
-                    {user.userStatus === "ACTIVE"
-                      ? "Block User"
-                      : "Unblock User"}
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className="flex flex-wrap mx-auto justify-center items-center gap-5 pt-20">
+      {users &&
+        users.map((user, key) => (
+          <div
+            key={key}
+            className="flex flex-col items-center justify-self-start min-w-[200px] bg-white rounded-xl shadow-md overflow-hidden p-3 gap-5"
+          >
+            {user.profilePicture ? (
+              <div>
+                <Image
+                  alt="user image"
+                  priority={true}
+                  src={user.profilePicture}
+                  width={100}
+                  height={100}
+                  className="object-contain rounded-full"
+                />
+              </div>
+            ) : (
+              <div>
+                <Image
+                  alt="user image"
+                  priority={true}
+                  src={defaultUser}
+                  width={100}
+                  height={100}
+                  className="object-contain rounded-full"
+                />
+              </div>
+            )}
+            <div className="">
+              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                {user.username}
+                {user.userId}
+              </div>
+              <div
+                className={`${
+                  user.userStatus === "ACTIVE"
+                    ? "flex justify-center text-green-500 mt-1"
+                    : "flex justify-center text-red-500 mt-1"
+                }`}
+              >
+                {getStatusLabel(user.userStatus)}
+              </div>
+            </div>
+
+            <div>
+              <button
+                onClick={() => changeStatusOfUser(user.userId, user.userStatus)}
+                className={`${
+                  user.userStatus === "ACTIVE"
+                    ? "flex items-center gap-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded"
+                    : "flex items-center gap-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded"
+                }`}
+              >
+                <i>
+                  {user.userStatus === "ACTIVE" ? (
+                    <CgBlock size={20} />
+                  ) : (
+                    <CgUnblock size={20} />
+                  )}
+                </i>
+                {user.userStatus === "ACTIVE" ? "Block User" : "Unblock User"}
+              </button>
+            </div>
+          </div>
+        ))}
     </div>
   );
 };

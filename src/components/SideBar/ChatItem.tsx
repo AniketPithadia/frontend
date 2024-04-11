@@ -31,7 +31,11 @@ function ChatItem({ user }: { user: userProps }) {
     <>
       <li
         onClick={handleClick}
+<<<<<<< HEAD
         className="flex gap-4 justify-center md:justify-start cursor-pointer hover:bg-slate-300 p-5 rounded-lg"
+=======
+        className="flex gap-4 justify-center cursor-pointer hover:bg-slate-300 p-5 rounded-lg"
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
       >
         <div className="avatar">
           <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -45,6 +49,7 @@ function ChatItem({ user }: { user: userProps }) {
           </div>
         </div>
         <div className="hidden sm:flex flex-col justify-center ">
+<<<<<<< HEAD
           <h3 className="font-semibold text-black text-sm lg:text-lg">
             {user?.username}
           </h3>
@@ -55,6 +60,12 @@ function ChatItem({ user }: { user: userProps }) {
                 : "text-[#707991]"
             } text-xs lg:text-md`}
           >
+=======
+          <h3 className="font-semibold text-black text-md lg:text-lg">
+            {user?.username}
+          </h3>
+          <p className="text-[#707991] text-xs lg:text-md">
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
             {user?.connectionStatus}
           </p>
         </div>

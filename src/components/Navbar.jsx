@@ -51,6 +51,28 @@ function Navbar() {
         <Link href="/">
           <Logo />
         </Link>
+<<<<<<< HEAD
+=======
+        <div>
+          <ul className="text-primaryColor font-light  flex justify-center gap-5">
+            {/* Your navigation links */}
+            {session && session.user && (
+              <>
+                <li className="hover:font-normal hover:cursor-pointer">
+                  {username}
+                </li>
+
+                <li
+                  className="hover:font-normal hover:cursor-pointer"
+                  onClick={handleSignOut}
+                >
+                  Sign Out
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
       </div>
     </nav>
   );

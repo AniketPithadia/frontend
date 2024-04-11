@@ -65,6 +65,7 @@ function AdminSection() {
                 "text-3xl md:text-6xl align-middle text-white ${merriweather.className}"
               }
             >
+<<<<<<< HEAD
               {!isAdmin ? (
                 <span>Admin Login</span>
               ) : (
@@ -80,6 +81,16 @@ function AdminSection() {
                 {!isAdmin ? (
                   <button
                     className="flex items-center gap-2 bg-white text-primaryColor border border-primaryColor  text-lg md:text-xl font-bold py-5 px-8 rounded-full"
+=======
+              {!isAdmin ? <span>Admin Login</span> : <span>Welcome, {session.details?.username}</span>}
+            </p>
+
+            <div className="flex items-center ">
+              <div>
+                {!isAdmin ? (
+                  <button
+                    className="flex items-center gap-2 bg-blue-800 text-white  text-lg md:text-xl font-bold py-5 px-8 rounded-full"
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                     onClick={() => {
                       signIn("keycloak");
                     }}
@@ -90,7 +101,11 @@ function AdminSection() {
                 ) : (
                   <Link
                     href={"/admin/chats"}
+<<<<<<< HEAD
                     className="flex items-center gap-2 bg-white text-primaryColor border border-primaryColor  text-lg md:text-xl font-bold py-5 px-8 rounded-full"
+=======
+                    className="flex items-center gap-2 bg-blue-800 text-white  text-lg lg:text-xl font-bold py-5 px-8 rounded-full"
+>>>>>>> 1a7a0e6678aa663a2fa1aaf298ff7ee2d7198bbf
                   >
                     Admin Chats
                   </Link>
